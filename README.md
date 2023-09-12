@@ -1,2 +1,2 @@
 # SoftUni-Advanced
-Tasks from the cours Python Advanced
+Tasks from the course Python Advanced
