@@ -7,14 +7,17 @@ for i in range(lines):
     if command[0] == "1":
         stack.append(int(command[1]))
 
-    elif command[0] == "2":
-        stack.pop()
+    elif stack:
+        if command[0] == "2":
+            stack.pop()
 
-    elif command[0] == "3":
-        print(max(stack))
+        elif command[0] == "3":
+            print(max(stack))
 
-    elif command[0] == "4":
-        print(min(stack))
+        elif command[0] == "4":
+            print(min(stack))
 
 while stack:
-    print(stack.pop(), end=", ")
+    print(stack.pop(), end="")
+    if stack:
+        print(", ", end="")
