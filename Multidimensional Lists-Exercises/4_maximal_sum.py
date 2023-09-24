@@ -18,4 +18,4 @@ for row in range(rows - 2):
 
 print(f"Sum = {max_sum}")
 max_matrix = [matrix[r][max_col:max_col + 3] for r in range(max_row, max_row + 3)]
-[print(*row) for row in max_matrix]
+[print(*row) for row in max_matrix] 
