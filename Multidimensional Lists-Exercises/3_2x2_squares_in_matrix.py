@@ -1,0 +1,11 @@
+rows, cols = [int(i) for i in input().split()]
+matrix = [[str(char) for char in input().split()] for row in range(rows)]
+
+counter = 0
+
+for row in range(rows - 1):
+    for col in range(cols - 1):
+        if matrix[row][col] == matrix[row][col + 1] == matrix[row + 1][col] == matrix[row + 1][col + 1]:
+            counter += 1
+
+print(counter)
