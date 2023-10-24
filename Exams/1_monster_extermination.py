@@ -5,26 +5,24 @@ soldiers = [int(x) for x in input().split(",")]
 
 monster_count = 0
 
-while True:
-    if len(monsters) == 0:
-        print("All monsters have been killed!")
-        break
-    elif len(soldiers) == 0:
-        print("The soldier has been defeated.")
-        break
-    else:
-        if monsters[0] <= soldiers[-1]:
-            soldiers[-1] -= monsters[0]
-            monsters.popleft()
-            if soldiers:
-                soldiers[-2] += soldiers[-1]
-                soldiers.pop()
-                monster_count += 1
+while soldiers and monsters:
+    current_monster = monsters.popleft()
+    current_soldier = soldiers.pop()
 
-        elif monsters[0] > soldiers[-1]:
-            if monsters:
-                monsters[0] -= soldiers[-1]
-                soldiers.pop()
-            monsters.rotate(-1)
+    if current_soldier >= current_monster:
+        monster_count += 1
+        current_soldier -= current_monster
+        if not soldiers and current_soldier > 0:
+            soldiers.append(current_soldier)
+        elif soldiers:
+            soldiers[-1] += current_soldier
+    else:
+        current_monster -= current_soldier
+        monsters.append(current_monster)
+
+if not monsters:
+    print("All monsters have been killed!")
+if not soldiers:
+    print("The soldier has been defeated.")
 
 print(f"Total monsters killed: {monster_count}")
